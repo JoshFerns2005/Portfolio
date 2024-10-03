@@ -7,285 +7,103 @@
   <title>Interactive Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      margin: 0;
-      padding: 0;
-      color: #ddd;
-    }
-
-    .hidden-section {
-      display: none;
-    }
-
-    .command-line {
-      width: 100%;
-      background-color: #1e1e1e;
-      color: #00ff00;
-      padding: 10px;
-      border: none;
-      outline: none;
-    }
-
-    .terminal {
-      width: 90%;
-      max-width: 1200px;
-      height: 70%;
-      max-height: 700px;
-      background-color: #1e1e1e;
-      color: #00ff00;
-      padding: 20px;
-      font-family: 'Courier New', Courier, monospace;
-      border-bottom: 1px solid #333;
-      transition: opacity 1s ease-in-out;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .fade-out {
-      opacity: 0;
-    }
-
-    .fade-in {
-      opacity: 1;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .main-content {
-    padding-top: 25px; /* Default padding for larger screens */
-  }
-
-  @media (max-width: 768px) {
-    .main-content {
-      padding-top: 0; /* Remove padding on mobile screens */
-    }
-  }
-    .card {
-      background-color: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 8px;
-    }
-
-    .home-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: auto;
-      background-color: #333;
-      padding: 20px;
-    }
-
-    .home-section .box {
-      flex: 1;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
-    .home-section .image {
-      flex: 1;
-      background-image: url('path-to-your-image.jpg');
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px;
-      height: 100%;
-      min-height: 300px;
-    }
-
-    .error-message {
-      color: red;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    header a {
-      color: white;
-    }
-  </style>
 </head>
 
-<body class="flex flex-col min-h-screen">
-
-  <div id="terminal" class="terminal">
+<body class="flex flex-col min-h-screen font-sans bg-black text-gray-300">
+  
+  <div id="terminal" class="terminal w-11/12 max-w-5xl h-3/4 max-h-96 bg-gray-900 text-green-500 p-5 font-mono border-b border-gray-700 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000 ease-in-out">
     <p>Enter your command below:</p>
-    <input id="commandLine" type="text" class="command-line" placeholder="Type your command here..." autocomplete="off"/>
+    <input id="commandLine" type="text" class="command-line w-full bg-gray-900 text-green-500 p-2 border-none outline-none" placeholder="Type your command here..." autocomplete="off" />
     <p class="mt-2">Command: <code>display portfolio();</code></p>
-    <div id="errorMessage" class="error-message hidden-section"></div>
+    <div id="errorMessage" class="error-message hidden text-red-500"></div>
   </div>
 
   <!-- Main Content -->
-  <div id="mainContent" class="main-content hidden-section flex-1 fade-in">
+  <div id="mainContent" class="hidden fade-in flex-1 flex flex-col">
+
     <!-- Header -->
-    <header class="absolute inset-x-0 top-0 z-30 w-full bg-black py-3 shadow md:top-6 md:rounded-3xl border border-white hidden md:flex">
-      <div class="container mx-auto px-4 flex items-center justify-center">
-        <div class="flex items-center space-x-5">
-          <a aria-current="page" class="inline-block rounded-lg px-2 py-1 text-xl font-bold text-white transition-all duration-200 hover:bg-gray-700 hover:text-white" href="#whoami">About</a>
-          <a class="inline-block rounded-lg px-2 py-1 text-xl font-bold text-white transition-all duration-200 hover:bg-gray-700 hover:text-white" href="#projects">Projects</a>
-          <a class="inline-block rounded-lg px-2 py-1 text-xl font-bold text-white transition-all duration-200 hover:bg-gray-700 hover:text-white" href="#certificate">Certificate</a>
-          <a class="inline-block rounded-lg px-2 py-1 text-xl font-bold text-white transition-all duration-200 hover:bg-gray-700 hover:text-white" href="#contact">Contact</a>
+    <header class="absolute inset-x-0 top-0 z-30 w-full bg-black py-3 shadow md:top-6 md:rounded-3xl border border-white hidden md:flex justify-center">
+      <nav class="container mx-auto px-4 flex items-center space-x-5">
+        <a class="text-xl font-bold text-white hover:bg-gray-700 px-2 py-1 rounded-lg" href="#whoami">About</a>
+        <a class="text-xl font-bold text-white hover:bg-gray-700 px-2 py-1 rounded-lg" href="#projects">Projects</a>
+        <a class="text-xl font-bold text-white hover:bg-gray-700 px-2 py-1 rounded-lg" href="#certificate">Certificate</a>
+        <a class="text-xl font-bold text-white hover:bg-gray-700 px-2 py-1 rounded-lg" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="whoami" class="container mx-auto my-12">
+      <h2 class="flex items-center mt-24 mb-8">
+        <span class="flex-grow border-t border-white"></span>
+        <span class="mx-4 px-4 py-2.5 text-4xl font-bold bg-white text-black rounded">Who Am I?</span>
+        <span class="flex-grow border-t border-white"></span>
+      </h2>
+
+      <div class="flex flex-col md:flex-row items-center bg-gray-900 p-5">
+        <img src="Joshua.jpg" alt="Joshua" class="rounded-full md:w-96 w-72">
+        <div class="flex-1 mt-12 md:mt-4 md:ml-10 text-center md:text-left">
+          <h1 class="mb-2 text-3xl font-bold text-white">Hi, I'm <span class="text-green-500">Joshua Jonah Fernandes</span></h1>
+          <p class="text-lg mt-4">I am currently pursuing a Bachelor of Science in Information Technology at St. Xavier’s College...</p>
         </div>
       </div>
-    </header>
-    
-    
-  
-    
-
- <!-- About Me Section -->
-<section id="whoami" class="container mx-auto my-12">
-  <h2 class="flex flex-row flex-nowrap items-center mt-24 mb-8">
-    <span class="flex-grow block border-t border-white"></span>
-    <span class="flex-none block mx-4 px-4 py-2.5 text-4xl font-bold rounded leading-none bg-white text-black">
-      Who Am I?
-    </span>
-    <span class="flex-grow block border-t border-white"></span>
-  </h2>
-
-  <div class="flex flex-col md:flex-row items-center justify-center bg-gray-900 p-5">
-    <div class="flex flex-1 items-center justify-center">
-      <img src="Joshua.jpg" alt="Joshua" class="rounded-full md:w-96 w-72">
-    </div>
-    <div class="flex-1 mt-12 md:mt-4 md:ml-10 text-center md:text-left">
-      <h1 class="mb-2 text-3xl font-bold text-white"><span class="text-green-500">Hi,</span> I'm Joshua Jonah Fernandes</h1>
-      <p class="text-lg mt-4">I am currently pursuing a Bachelor of Science in Information Technology at St. Xavier’s College. With a passion for coding and technology, I have gained knowledge and experience in a variety of programming languages including Python, JavaScript, HTML, CSS, Dart, R, SQL, Next.js, React, MongoDB, Firebase, PHP, and Java.</p>
-      <p class="text-lg mt-4">I am motivated to use my knowledge and creativity to work on a variety of projects, from web development to software engineering. My academic studies have given me a firm foundation in both theory and practical applications.</p>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="container mx-auto my-12 p-6">
-      <h2 class="flex flex-row flex-nowrap items-center mt-24 mb-8">
-        <span class="flex-grow block border-t border-white"></span>
-        <span class="flex-none block mx-4 px-4 py-2.5 text-4xl font-bold rounded leading-none bg-white text-black">
-          Projects
-        </span>
-        <span class="flex-grow block border-t border-white"></span>
+      <h2 class="flex items-center mt-24 mb-8">
+        <span class="flex-grow border-t border-white"></span>
+        <span class="mx-4 px-4 py-2.5 text-4xl font-bold bg-white text-black rounded">Projects</span>
+        <span class="flex-grow border-t border-white"></span>
       </h2>
 
       <div class="space-y-6">
-        <!-- Project 1: Hangman Game -->
-        <div class="card border border-gray-700 p-6 flex flex-col md:flex-row items-center space-x-6 hover:bg-gray-800">
-          <img src="Hangman_images/HangmanMM.png" alt="Hangman Game" class="w-full md:w-1/3 h-auto object-cover rounded-md mb-4 md:mb-0">
+        <div class="card bg-gray-900 border border-gray-700 p-6 flex flex-col md:flex-row items-center space-x-6 hover:bg-gray-800">
+          <img src="Hangman_images/HangmanMM.png" alt="Hangman Game" class="w-full md:w-1/3 h-auto rounded-md">
           <div class="flex-1">
             <h3 class="text-xl font-bold mb-2">Hangman Game</h3>
-            <p class="text-lg mb-2">This project involves developing a Hangman game using Python during my first year of BSc IT, mainly for the Computer Graphics subject. I was responsible for the animations, using Blender to create dynamic and engaging visuals. The game features a user-friendly interface, interactive gameplay, and visually appealing animations, demonstrating my skills in both programming and graphic design.</p>
-            <p class="text-lg">By combining Python programming with Blender animations, the Hangman game project showcases my ability to integrate different technologies to create an engaging and educational game.</p>
-            <a href="https://github.com/JoshFerns2005/Hangman" target="_blank" class="inline-block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              GitHub →
-            </a>
+            <p class="text-lg mb-2">This project involves developing a Hangman game using Python...</p>
+            <a href="https://github.com/JoshFerns2005/Hangman" target="_blank" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">GitHub →</a>
           </div>
         </div>
 
-        <!-- Project 2: Xavier's Marketplace -->
-        <div class="card border border-gray-700 p-6 flex flex-col md:flex-row items-center space-x-6 hover:bg-gray-800">
-          <img src="XMP images/xmp.png" alt="Xavier's Marketplace" class="w-full md:w-1/3 h-auto object-cover rounded-md mb-4 md:mb-0">
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">Xavier's Marketplace</h3>
-            <p class="text-lg mb-2">Developed during my second year of BSc IT, this eCommerce platform showcases my proficiency in web development and full-stack programming. Using HTML, CSS, JavaScript, and Tailwind CSS, along with MongoDB for database management, I created a user-friendly and visually appealing platform for buying and selling products. The project also demonstrates my skills in server-side validation, CRUD operations, and API integration.</p>
-            <p class="text-lg">By leveraging modern web technologies and best practices, Xavier's Marketplace highlights my ability to build functional and scalable web applications, providing users with a seamless shopping experience.</p>
-           
-          </div>
-        </div>
+        <!-- Other projects go here -->
 
-        <!-- Project 3: mOS Practical -->
-        <div class="card border border-gray-700 p-6 flex flex-col md:flex-row items-center space-x-6 hover:bg-gray-800">
-          <img src="OSS.png" alt="mOS Practical" class="w-full md:w-1/3 h-auto object-cover rounded-md mb-4 md:mb-0">
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">MOS Practical</h3>
-            <p class="text-lg mb-2">This project involved creating a website and game using open-source software as part of my MOS Practical during the second year of BSc IT. I utilized WordPress to set up the website, developed a game using Godot Engine, and integrated it into the website. The entire project was hosted on GitHub Pages and run on a Linux operating system (Pop!_OS).</p>
-            <p class="text-lg">The MOS Practical project demonstrates my ability to work with various open-source tools and technologies, showcasing my versatility and adaptability in different development environments.</p>
-            <a href="https://joshferns8.wordpress.com" target="_blank" class="inline-block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Site →
-            </a>
-          </div>
-        </div>
       </div>
     </section>
+
+    <!-- Certificate Section -->
     <section id="certificate" class="container mx-auto my-12 p-6 text-center">
-      <h2 class="flex flex-row flex-nowrap items-center mt-24 mb-8">
-        <span class="flex-grow block border-t border-white"></span>
-        <span class="flex-none block mx-4 px-4 py-2.5 text-4xl font-bold rounded leading-none bg-white text-black">
-          Certificate
-        </span>
-        <span class="flex-grow block border-t border-white"></span>
+      <h2 class="flex items-center mt-24 mb-8">
+        <span class="flex-grow border-t border-white"></span>
+        <span class="mx-4 px-4 py-2.5 text-4xl font-bold bg-white text-black rounded">Certificate</span>
+        <span class="flex-grow border-t border-white"></span>
       </h2>
-      
-      <div class="max-w-lg mx-auto p-6 border border-gray-700 rounded-md shadow-lg hover:bg-gray-800 transition-all">
-        <img src="Accenture.png" alt="Certificate" class="w-full h-auto object-cover rounded-md mb-4">
+
+      <div class="max-w-lg mx-auto p-6 bg-gray-900 border border-gray-700 rounded-md shadow-lg hover:bg-gray-800">
+        <img src="Accenture.png" alt="Certificate" class="w-full h-auto rounded-md mb-4">
         <h3 class="text-xl font-bold mb-2">Accenture Certificate</h3>
-        <p class="text-lg mb-4">
-          Data Analytics and Visualization Job Simulation
-          <br>
-          - Completed a simulation focused on advising a hypothetical social media client as a Data Analyst at Accenture
-          <br>
-          - Cleaned, modeled, and analyzed 7 datasets to uncover insights into content trends to inform strategic decisions
-          <br>
-          - Prepared a PowerPoint deck and video presentation to communicate key insights for the client and internal stakeholders
-        </p>
+        <p class="text-lg mb-4">Data Analytics and Visualization Job Simulation...</p>
       </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto my-12 p-6 text-center max-w-md">
-      <div class="flex h-auto w-full items-center justify-center bg-black">
-        <h1
-          class="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-3xl font-extrabold text-transparent text-center select-auto">
-          Get In Touch
-        </h1>
-      </div>
 
-      <div class="flex justify-center space-x-6">
-        <a href="https://www.linkedin.com/in/joshua-jonah-fernandes-80b251253" target="_blank"
-          class="text-blue-400 hover:text-blue-600 transition duration-300">
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto my-12 p-6 text-center">
+      <h1 class="bg-gradient-to-r from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-transparent text-3xl font-extrabold">
+        Get In Touch
+      </h1>
+      <div class="flex justify-center space-x-6 mt-4">
+        <a href="https://www.linkedin.com/in/joshua-jonah-fernandes-80b251253" target="_blank" class="text-blue-400 hover:text-blue-600 transition duration-300">
           <i class="fab fa-linkedin fa-2x"></i>
         </a>
-        <a href="https://github.com/JoshFerns2005" target="_blank"
-          class="text-blue-400 hover:text-blue-600 transition duration-300">
+        <a href="https://github.com/JoshFerns2005" target="_blank" class="text-blue-400 hover:text-blue-600 transition duration-300">
           <i class="fab fa-github fa-2x"></i>
         </a>
-
       </div>
     </section>
 
   </div>
 
-  <script>
-    function displayPortfolio() {
-      const terminal = document.getElementById('terminal');
-      const mainContent = document.getElementById('mainContent');
-      terminal.classList.add('fade-out');
-      mainContent.classList.remove('hidden-section');
-      mainContent.classList.add('fade-in');
-      setTimeout(() => {
-        terminal.style.display = 'none';
-      }, 1000);
-    }
-
-    document.getElementById('commandLine').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        const command = e.target.value.trim();
-        if (command === 'display portfolio();') {
-          displayPortfolio();
-          document.getElementById('errorMessage').classList.add('hidden-section');
-        } else {
-          document.getElementById('errorMessage').textContent = 'Invalid command. Please try again.';
-          document.getElementById('errorMessage').classList.remove('hidden-section');
-        }
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
